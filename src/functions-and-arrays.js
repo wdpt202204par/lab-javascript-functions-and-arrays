@@ -13,7 +13,7 @@ function maxOfTwoNumbers(number1, number2) {
 
 // Iteration #2: Find longest word
 
-/* Le tableau "words" ci-dessous est de taille 7 (car il contient 7 éléments) : words.length === 7.
+/* @Wilson : Le tableau "words" ci-dessous est de taille 7 (car il contient 7 éléments) : words.length === 7.
  * Sa dernière position (son dernier "index"), cependant, est la 6ème :
  *
  * Positions :     0          1          2           3          4         5           6 = words.length - 1         */
