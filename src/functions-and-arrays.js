@@ -287,6 +287,52 @@ function greatestProduct(matrix) {
   return max;
 }
 
+// Iteration 8.1: Bonus
+
+function greatestProductOfDiagonals(matrix) {
+  let max       = 0;
+  let factors   = [0, 0, 0, 0];
+  let origin    = [0, 0];
+  let direction = "";
+
+  // Descending diagonals (this direction: \)
+  for (let i = 0; i < matrix.length - 4; i++) {
+    for (let j = 0; j < matrix[j].length - 4; j++) {
+      horizontalProduct = matrix[i][j] * matrix[i + 1][j + 1] * matrix[i + 2][j + 2] * matrix[i + 3][j + 3];
+
+      if (horizontalProduct > max) {
+        max = horizontalProduct;
+
+        // Debug
+        factors.splice(0, 4, matrix[i][j], matrix[i + 1][j + 1], matrix[i + 2][j + 2], matrix[i + 3][j + 3]);
+        origin[0] = i; origin[1] = j;
+        direction = "descending";
+      }
+    }
+  }
+
+  // Ascending diagonals (this direction: /)
+  for (let j = 0; j < matrix[0].length - 4; j++) {
+    for (let i = 3; i < matrix.length; i++) {
+      verticalProduct = matrix[i][j] * matrix[i - 1][j + 1] * matrix[i - 2][j + 2] * matrix[i - 3][j + 3];
+
+      if (verticalProduct > max) {
+        max = verticalProduct;
+
+        // Debug
+        factors.splice(0, 4, matrix[i][j], matrix[i - 1][j + 1], matrix[i - 2][j + 2], matrix[i - 3][j + 3]);
+        origin[0] = i; origin[1] = j;
+        direction = "ascending";
+      }
+    }
+  }
+
+  // Debug
+  console.log(`Winners: ${factors} at (i, j) = (${origin[0]}, ${origin[1]}) in ${direction} direction.`);
+  
+  return max;
+}
+
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
