@@ -1,41 +1,158 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+function maxOfTwoNumbers(number1, number2) {
+  let max;
 
+  if (number1 > number2) {
+    max = number1;
+  } else if (number1 <= number2) {
+    max = number2;
+  }
 
+  return max;
+}
 
 // Iteration #2: Find longest word
+
+/* @Wilson : Le tableau "words" ci-dessous est de taille 7 (car il contient 7 éléments) : words.length === 7.
+ * Sa dernière position (son dernier "index"), cependant, est la 6ème :
+ *
+ * Positions :     0          1          2           3          4         5           6 = words.length - 1         */
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(wordsArray) {
+/* 
+ * @Wilson : la fonction findLongestWord parcours le tableau "wordsArray" de gauche à droite avec une boucle "for"
+ * (wordsArray[0], wordsArray[1], wordsArray[2], etc., jusqu'à wordsArray[wordsArray.length - 1]).
+ * 
+ * -> la dernière position est "wordsArray.length - 1" (cf. exemple ci-dessus).
+ *
+ * Pour chaque mot wordsArray[i] (avec i allant de 0 à wordsArray.length - 1), la fonction compare la longueur du mot
+ * à la valeur "max".
+ * Si la longueur du mot est plus grande que "max", alors elle devient le nouveau "max" :
+ * 
+ * if (wordsArray[i].length > max) {
+ *    max         = wordsArray[i].length;
+ * }
+ * 
+ * En appliquant cette méthode à tous les éléments du tableau, l'un après l'autre, la variable "max" contiendra
+ * la plus grande de toutes les longueurs à la fin du parcours.
+ * 
+ * Pour se "souvenir" du mot de taille maximal, on l'enregistre tout de suite dans la variable "longestWord" :
+ * 
+ * if (wordsArray[i].length > max) {
+ *    max         = wordsArray[i].length;
+ *    longestWord = wordsArray[i];
+ * }
+ * 
+ * Note : à tout moment, si un mot est enregistré dans "longestWord", alors c'est que c'est le plus long de tous ceux qu'on
+ * a parcourus jusque là, et sa taille est enregistré dans "max".
+ * 
+ * Au fur et à mesure que l'on parcours le tableau, on tombe sur de nouveaux "candidats" à être le maximum ; en enregistrant
+ * chaque nouveau candidat dans la variable longestWord (et donc en remplaçant le précédent - qui était plus court),
+ * on termine bien avec le plus grand d'entre eux dans "longestWord" à la fin du parcours.
+ * 
+ * En répétant ces 2 instructions (enregistrer le nouveau max, et enregistrer le mot associé) pour chaque mot du tableau,
+ * on termine le parcours avec la plus grande longueur dans la variable "max" et le mot associé (le plus long du tableau)
+ * dans la variable "longestWord".
+ * 
+ * Remarque : lorsque 2 mots ont tous les deux la taille maximale, le premier est enregistré dans la variable "longestWord".
+ * Lorsque la boucle arrive sur le second, elle compare sa taille à la taille du premier avec l'instruction
+ * "if (words[i].length > max") (-> à ce stade de la boucle, "words[i].length" est la taille du second, et "max" la taille
+ * du premier).
+ * Comme l'inégalité est "stricte" (on utilise ">" et pas ">="), la condition (wordsArray[i].length > max) est fausse
+ * (car les 2 longueurs sont égales).
+ * Les variables "max" et "longestWord" ne sont donc pas modifiées, et "longestWord" contient toujours le premier mot.
+ * 
+ * À la fin de la fonction, l'instruction "return longestWord;" renverra donc bien le premier des 2 mots les plus longs.
+ * 
+ * Note : ça fonctionne aussi si le tableau contient plus de 2 mots de la taille maximale.
+ */
 
+  let max         = 0;
+  let longestWord = null;
 
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i].length > max) {
+      max         = wordsArray[i].length
+      longestWord = wordsArray[i]
+    }
+  }
+
+  return longestWord;
+}
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(numbersArray) {
+  let sum = 0;
 
+  for (let i = 0; i < numbersArray.length; i++) {     // À chaque tour de boucle, on ajoute le nombre "numbersArray[i]"
+    sum += numbersArray[i];                           // dans la variable "sum"
+  }                                                   // ("sum += numbers[i];" est équivalent à "sum = sum + numbers[i];")
 
+  // À la fin de la boucle, on a donc ajouté tous les entiers "numbersArray[i]" à "sum".
+
+  return sum;
+}
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(genericArray) {
 
+  let sum = 0;
 
+  for (let i = 0; i < genericArray.length; i++) {
+    switch (typeof genericArray[i]) {
+      case "boolean":
+        sum += Number(genericArray[i]);
+        break;
+      case "number":
+        sum += genericArray[i];
+        break;
+      case "string":
+        sum += genericArray[i].length;
+        break;
+      case "undefined": case "null":
+        break;
+      default:
+        throw "Unsupported data type sir or ma'am";
+    }
+  }
+
+  return sum;
+}
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
-
+function averageNumbers(numbersArray) {
+  if (numbersArray.length > 0) {
+    return sumNumbers(numbersArray) / numbersArray.length;
+  } else {
+    return null;
+  }
+}
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(wordsArray) {
+  let lengths = [];
+
+  wordsArray.forEach(item => lengths.push(item.length));
+
+  return averageNumbers(lengths);
+}
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(genericArray) {
+  if (genericArray.length > 0) {
+    return sum(genericArray) / genericArray.length;
+  } else {
+    return null;
+  }
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -52,16 +169,49 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArray) {
+  let i = 0;
 
+  if (wordsArray.length === 0) {
+    return null;
+  } else {
+    while (i < wordsArray.length) {
+      let currentWord         = wordsArray[i];
+      let nextOccurenceIndex  = wordsArray.slice(i + 1).indexOf(currentWord);
+
+      // Cleaning all occurences of uniquified[i]
+      while (nextOccurenceIndex != -1) {
+        wordsArray.splice(nextOccurenceIndex + i + 1, 1);   // nextOccurenceIndex is relative to a slice starting at i + 1
+        nextOccurenceIndex    = wordsArray.slice(i + 1).indexOf(currentWord);
+      }
+
+      i++;
+    }
+  }
+
+  return wordsArray;
+}
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(wordsArray, word) {
+  let wordIsInArray = false;
 
+  if (wordsArray.length === 0) {
+    return null;
+  } else {
+    for (let i = 0; i < wordsArray.length; i++) {
+      if (wordsArray[i] === word) {
+        wordIsInArray = true;
+        break;
+      }
+    }
 
+  return wordIsInArray;
+  }
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -78,9 +228,12 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, word) {
+  let count = 0;
 
-
+  wordsArray.forEach(item => count += Number(item === word));
+  return count;
+}
 
 // Iteration #8: Bonus
 const matrix = [
@@ -106,10 +259,79 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let max = 0;
 
+  // Checking lines
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[j].length - 4; j++) {
+      horizontalProduct = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
 
+      if (horizontalProduct > max) {
+        max = horizontalProduct;
+      }
+    }
+  }
 
+  // Checking columns
+  for (let j = 0; j < matrix[0].length; j++) {
+    for (let i = 0; i < matrix.length - 4; i++) {
+      verticalProduct = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+
+      if (verticalProduct > max) {
+        max = verticalProduct;
+      }
+    }
+  }
+
+  return max;
+}
+
+// Iteration 8.1: Bonus
+
+function greatestProductOfDiagonals(matrix) {
+  let max       = 0;
+  let factors   = [0, 0, 0, 0];
+  let origin    = [0, 0];
+  let direction = "";
+
+  // Descending diagonals (this direction: \)
+  for (let i = 0; i < matrix.length - 4; i++) {
+    for (let j = 0; j < matrix[j].length - 4; j++) {
+      horizontalProduct = matrix[i][j] * matrix[i + 1][j + 1] * matrix[i + 2][j + 2] * matrix[i + 3][j + 3];
+
+      if (horizontalProduct > max) {
+        max = horizontalProduct;
+
+        // Debug
+        factors.splice(0, 4, matrix[i][j], matrix[i + 1][j + 1], matrix[i + 2][j + 2], matrix[i + 3][j + 3]);
+        origin[0] = i; origin[1] = j;
+        direction = "descending";
+      }
+    }
+  }
+
+  // Ascending diagonals (this direction: /)
+  for (let j = 0; j < matrix[0].length - 4; j++) {
+    for (let i = 3; i < matrix.length; i++) {
+      verticalProduct = matrix[i][j] * matrix[i - 1][j + 1] * matrix[i - 2][j + 2] * matrix[i - 3][j + 3];
+
+      if (verticalProduct > max) {
+        max = verticalProduct;
+
+        // Debug
+        factors.splice(0, 4, matrix[i][j], matrix[i - 1][j + 1], matrix[i - 2][j + 2], matrix[i - 3][j + 3]);
+        origin[0] = i; origin[1] = j;
+        direction = "ascending";
+      }
+    }
+  }
+
+  // Debug
+  console.log(`Winners: ${factors} at (i, j) = (${origin[0]}, ${origin[1]}) in ${direction} direction.`);
+  
+  return max;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
