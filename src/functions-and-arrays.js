@@ -1,43 +1,154 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+
+// correction d'Antoine, ma version personnelle était loin du bon résultat "excepté l'utilisation du Math.max". //
+
+function maxOfTwoNumbers(firstScore, secondScrore) {
+  return Math.max(firstScore, secondScrore);
+}
+
+// test
+let largest = maxOfTwoNumbers(13, 14);
+console.log(largest); // affiche 14 //
+
+// la fonction sert de module de calcul lorsqu'une variable est déclarée avec des valeurs. //
 
 
 
 // Iteration #2: Find longest word
+
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(words) {
+  
+  if (words.length < 1) return null;
+
+  let longestWord = ``;
+
+  for ( i = 0; i <= words.length; i++) {
+    let word = words[i]; // word[i] represente en enième mot de l'array.//
+
+  if (word.length > longestWord.length) {
+    longestWord = word; // parceque longestWord est plus long que word, il devient le "nouveau" longestWord".//
+  }
+ }
+
+return longestWord;
+}
+
+let longest = findLongestWord(words);
+console.log(longest);
+
+// problem : longestWord ne serait pas défini. Je ne vois pas l'erreur dans le code.//
+
 
 
 
 // Iteration #3: Calculate the sum
+
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(numbers) {
+  
+let total = 0;
+  
+for (let i = 0; i <= numbers.length; i++) {
+ total += numbers[i]; //total est le résultat de l'addition "la la chaine" de l'array "number".//
+}
+  return total;
+}
+
+const sum = sumNumbers(numbers);
+console.log(sum);
+
+
+// total n'est pas défini. je ne trouve pas l'erreur sur le console.log.//
+
 
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
 
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+function sum(mixedArr) {
+
+let sum = 0;
+
+mixedArr.forEach(function(elem) { //forEach permet de donner une action pour chaque élement que l'on choisit de différencier par la suite (entre les break).//
+  switch (typeof elem) { //typeOf permet de différencier "boolean", "string" et "nombre".//
+    case 'number':
+      elem += elem; //nombre, on additionne chaque élément dans la chaine des "elements".//
+    break;
+    case 'boolean':
+      if (elem === true) {sum += 1} //pour tout boolean rencontré qui renvoie "true", nous accordons la valeur 1.//
+    else { sum += 0}; //pour tout boolean qui ne renvoie PAS "true", (induction "false"), nous 
+    break;
+    case 'string' = elem.length;
+    break;
+  }
+});
+
+return sum;
+}
+
+let total = sum(mixedArr);
+console.log(total);
 
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
+
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numbersAvg) {
+
+  if (numbersAvg.length < 1) return null
+
+  return sumNumbers(numbersAvg) / numbersAvg.length;
+};
+
+const average = averageNumbers(numbersAvg);
+console.log(average);
 
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(wordsArr) {
+
+if ( wordsArr < 1) return null;
+let sumLetter = 0;
+
+for (let i = 0; wordsArr.length; i++) { 
+
+  let sumOfLetter += wordsArr[i].length; //sumOfLetter vaut l'addition sur la continuité de la chaine wordsArr du nomnbre de lettre de chaque éléments.//
+}
+
+return sumOfLetter/wordsArr.length; //wordsArr.length permet de ne pas se tromper sur le nombre d'éléments pour la division, astucieux et logique.)//
+}
+
+let averageOfLetter = averageWordLength(wordsArr);
+console.log(averageOfLetter);
+
+
 
 // Bonus - Iteration #4.1
-function avg() {}
+
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+function avg(mixedArr) {
+
+  if (mixedArr.length < 1) return null;
+  return Number (total/mixedArr.length);
+}
+
+let simpleAverage = avg(mixedArr);
+console.log(simpleAverage)
+
+
 
 // Iteration #5: Unique arrays
+
 const wordsUnique = [
   'crab',
   'poison',
@@ -50,17 +161,64 @@ const wordsUnique = [
   'communion',
   'simple',
   'bring'
-];
+]; /* pour indexer : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+      cette methode permet de numéroté chaque élément ou cellule du tableau*/
 
-function uniquifyArray() {}
+function uniquifyArray(wordsUnique) {
+
+if (wordsUnique < 1) return null; //vérification.//
+
+let newArray = []; // totalement issue de la correction d'Antoine. il est possible de signifier la création d'un nouveau tableau avec des crochets vides.//
+
+for ( let i = 0; i <= wordsUnique.length; i++) { //requalifions cette ligne comme zone de recherche des éléments de la fonction.//
+  if newArray.indexOf(wordsUnique[i]) === -1 { //je signifie que si, dans mon tableau newArray, la valeur de wordUnique controlé, n'est pas présente...//
+    newArray.push(wordsUnique[i]); //... alors je pousse dans newArray l'élément présent dans wordsUnique.//
+  }
+}
+
+return newArray;
+}
+
+let arrayOfUniqueWords = uniquifyArray(wordsUnique);
+console.log(arrayOfUniqueWords);
+
+/* maintenant que la fonction existe, il m'est possible de dupliquer cette dernière en changeant l'array de référence.
+   ex :
+
+   let arrayOfSuppliers = uniquifyArray(supplierUnique);
+   let arrayOfCustomer = uniquifyArray(clientUnique);
+
+   l'intéret des de pouvoir faire appel a cette méthode de calcul résumé dans la fonction a chaque fois qu'on en a besoin.
+   la seule manipulation a faire serait de changer l'origine de la "data" qui est appelé entre les "()" de la fonction appelée.*/
+
 
 
 
 // Iteration #6: Find elements
+
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(wordsFind) {
 
+  if (wordsFind < 1) return null;
+
+  let wordSearch = '';
+
+
+  for (let i = 0; i <= wordsFind; i++) {
+
+    let wordFound = wordsFind[i];
+
+    if ( wordSearch === wordFound) {
+      return true
+    } else {
+        return false;
+      }
+    }
+
+  }
+
+console.log(doesWordExist(wordsFind)); //demander correction sur cette méthode.//
 
 
 // Iteration #7: Count repetition
@@ -78,7 +236,31 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsCount, word) { //nous intégrons un élément "word" dans ce type de fonction pour être mot "recherché)".//
+
+  if (matrix < 1) return null;
+
+  let timeWordFound = 0;
+
+  for (let i = 0; i <= wordsCount.length; i++) {
+
+    if (wordsCount[i] === word){ //exemple à garder dans le cas d'une recherche spécifique dans un tableau//
+    timeWordFound++; //la formule signifie de rechercher un nombre de fois ou le mot recherché est trouvé dans l'array.//
+    }
+  }
+
+  return timeWordFound;
+
+}
+
+//correction d'Antoine//
+const howManyMatter = howManyTimes(wordsCount, 'matter');
+console.log(howManyMatter);
+
+const howManyDog = howManyTimes(wordsCount, 'dog');
+console.log(howManyDog);
+//lors de l'appel de fonction, on détermine le mot recherché à la suite du tableau initial.//
+
 
 
 
@@ -106,7 +288,37 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+function greatestProduct(matrix) {
+
+  function greatestProduct(m) {
+
+    let result = -Infinity; //"Infinity" est une fonction de Javascript qui a pour but dans notre cas d'effectuer sur tout le tableau les opérations permettant de reprérer le produit le plus élevé. Celà évite de donner des colonnes ou ligne spécifiques, toutes seront traitées.//
+    let horizontal, vertical; //ne pas oubblier comme dans la correction qu'il est possible de déclarer deux variables en même temps. Utilie si elles sont liées.//
+
+    const nRows = m.length; //dans une array, la longeur des éléments représente le nombre de colonnes.//
+    const nCols = m[0].length; //dans une array une suite de [] permet de comprendre que chaque array "internes" représente une nouvelle ligne.//
+    
+    function el(i, j) { //une fonction dans une fonction pour rechercher un élément correspondant à une colonne et une ligne (ressemble à Vlookup d'excel).//
+      return ((m[i] || [])[j] || 1); //besoin d'explications.//
+    }
+    // With a double for loop [i,j], loop through all our elements
+    for (let i=0; i < nRows-1; i++) { //on choisit "i" pour les lignes.//
+      for (let j=0; j < nCols-1; j++) { //on choisit "j" pour les colonnes.//
+        
+        horizontal = el(i, j) * el(i, j+1) * el(i, j+2) * el(i, j+3); //on controle à l'horizontal 4 éléments (3 colonnes à la suite croissante de l'élément de base).//
+        
+        vertical = el(i, j) * el(i+1, j) * el(i+2, j) * el(i+3, j); //on controle verticalement en controlant 3 lignes après la ligne de base.//
+        result = Math.max(result, horizontal, vertical); //on cherche le maximum trouvé par une infinité d'opération dans notre matrice sur deux dimensions, verticale et horizontale.//
+      }
+    }
+    return result;
+  }
+}
+
+//exemple test Antoine.//
+const maxProduct = greatestProduct(matrix);
+console.log(maxProduct);
 
 
 
