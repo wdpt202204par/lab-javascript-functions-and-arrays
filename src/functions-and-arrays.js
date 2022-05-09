@@ -2,8 +2,8 @@
 
 // correction d'Antoine, ma version personnelle était loin du bon résultat "excepté l'utilisation du Math.max". //
 
-function maxOfTwoNumbers(firstScore, secondScrore) {
-  return Math.max(firstScore, secondScrore);
+function maxOfTwoNumbers(firstScore, secondScore) {
+  return Math.max(firstScore, secondScore);
 }
 
 // test
