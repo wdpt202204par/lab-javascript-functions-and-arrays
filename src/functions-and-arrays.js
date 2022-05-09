@@ -27,12 +27,12 @@ function findLongestWord(words) {
   for ( i = 0; i <= words.length; i++) {
     let word = words[i]; // word[i] represente en enième mot de l'array.
 
-  if (word.length > longestWord.length) {
-    longestWord = word; // parceque longestWord est plus long que word, il devient le "nouveau" longestWord".
+    if (word.length > longestWord.length) {
+     longestWord = word; // parceque longestWord est plus long que word, il devient le "nouveau" longestWord".
+    }
   }
- }
 
-return longestWord;
+  return longestWord;
 }
 
 let longest = findLongestWord(words);
@@ -49,11 +49,13 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numbers) {
   
-let total = 0;
+  let total = 0;
   
-for (let i = 0; i <= numbers.length; i++) {
- total += numbers[i]; //total est le résultat de l'addition "la la chaine" de l'array "number".
-}
+  for (let i = 0; i <= numbers.length; i++) {
+
+    total += numbers[i]; //total est le résultat de l'addition "la la chaine" de l'array "number".
+  }
+ 
   return total;
 }
 
@@ -72,23 +74,23 @@ const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
 function sum(mixedArr) {
 
-let sum = 0;
+  let sum = 0;
 
-mixedArr.forEach(function(elem) { //forEach permet de donner une action pour chaque élement que l'on choisit de différencier par la suite (entre les break).
-  switch (typeof elem) { //typeOf permet de différencier "boolean", "string" et "nombre".
-    case 'number':
-      elem += elem; //nombre, on additionne chaque élément dans la chaine des "elements".
-    break;
-    case 'boolean':
-      if (elem === true) {sum += 1} //pour tout boolean rencontré qui renvoie "true", nous accordons la valeur 1.
-    else { sum += 0}; //pour tout boolean qui ne renvoie PAS "true", (induction "false")
-    break;
-    case 'string' = elem.length;
-    break;
-  }
-});
+  mixedArr.forEach(function(elem) { //forEach permet de donner une action pour chaque élement que l'on choisit de différencier par la suite (entre les break).
+    switch (typeof elem) { //typeOf permet de différencier "boolean", "string" et "nombre".
+      case 'number':
+        elem += elem; //nombre, on additionne chaque élément dans la chaine des "elements".
+      break;
+      case 'boolean':
+        if (elem === true) {sum += 1} //pour tout boolean rencontré qui renvoie "true", nous accordons la valeur 1.
+         else { sum += 0}; //pour tout boolean qui ne renvoie PAS "true", (induction "false")
+      break;
+      case 'string' = elem.length;
+      break;
+   }
+  });
 
-return sum;
+  return sum;
 }
 
 let total = sum(mixedArr);
@@ -116,15 +118,16 @@ const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smar
 
 function averageWordLength(wordsArr) {
 
-if ( wordsArr < 1) return null;
-let sumLetter = 0;
+  if ( wordsArr < 1) return null;
 
-for (let i = 0; wordsArr.length; i++) { 
+  let sumLetter = 0;
 
-  let sumOfLetter += wordsArr[i].length; //sumOfLetter vaut l'addition sur la continuité de la chaine wordsArr du nomnbre de lettre de chaque éléments.
-}
+  for (let i = 0; wordsArr.length; i++) { 
 
-return sumOfLetter/wordsArr.length; //wordsArr.length permet de ne pas se tromper sur le nombre d'éléments pour la division, astucieux et logique).
+    let sumOfLetter += wordsArr[i].length; //sumOfLetter vaut l'addition sur la continuité de la chaine wordsArr du nomnbre de lettre de chaque éléments. 
+  }
+
+  return sumOfLetter/wordsArr.length; //wordsArr.length permet de ne pas se tromper sur le nombre d'éléments pour la division, astucieux et logique).
 }
 
 let averageOfLetter = averageWordLength(wordsArr);
@@ -166,17 +169,17 @@ const wordsUnique = [
 
 function uniquifyArray(wordsUnique) {
 
-if (wordsUnique < 1) return null; //vérification.
+  if (wordsUnique < 1) return null; //vérification.
 
-let newArray = []; // totalement issue de la correction d'Antoine. il est possible de signifier la création d'un nouveau tableau avec des crochets vides.
+  let newArray = []; // totalement issue de la correction d'Antoine. il est possible de signifier la création d'un nouveau tableau avec des crochets vides.
 
-for ( let i = 0; i <= wordsUnique.length; i++) { //requalifions cette ligne comme zone de recherche des éléments de la fonction.
-  if newArray.indexOf(wordsUnique[i]) === -1 { //je signifie que si, dans mon tableau newArray, la valeur de wordUnique controlé, n'est pas présente...
+  for ( let i = 0; i <= wordsUnique.length; i++) { //requalifions cette ligne comme zone de recherche des éléments de la fonction.
+    if newArray.indexOf(wordsUnique[i]) === -1 { //je signifie que si, dans mon tableau newArray, la valeur de wordUnique controlé, n'est pas présente...
     newArray.push(wordsUnique[i]); //... alors je pousse dans newArray l'élément présent dans wordsUnique.
+    }
   }
-}
 
-return newArray;
+  return newArray;
 }
 
 let arrayOfUniqueWords = uniquifyArray(wordsUnique);
