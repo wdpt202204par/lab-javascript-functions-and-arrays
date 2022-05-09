@@ -1,6 +1,6 @@
 // Iteration #1: Find the maximum
 
-// correction d'Antoine, ma version personnelle était loin du bon résultat "excepté l'utilisation du Math.max". //
+// correction d'Antoine, ma version personnelle était loin du bon résultat "excepté l'utilisation du Math.max".
 
 function maxOfTwoNumbers(firstScore, secondScore) {
   return Math.max(firstScore, secondScore);
@@ -8,9 +8,9 @@ function maxOfTwoNumbers(firstScore, secondScore) {
 
 // test
 let largest = maxOfTwoNumbers(13, 14);
-console.log(largest); // affiche 14 //
+console.log(largest); // affiche 14
 
-// la fonction sert de module de calcul lorsqu'une variable est déclarée avec des valeurs. //
+// la fonction sert de module de calcul lorsqu'une variable est déclarée avec des valeurs.
 
 
 
@@ -25,10 +25,10 @@ function findLongestWord(words) {
   let longestWord = ``;
 
   for ( i = 0; i <= words.length; i++) {
-    let word = words[i]; // word[i] represente en enième mot de l'array.//
+    let word = words[i]; // word[i] represente en enième mot de l'array.
 
   if (word.length > longestWord.length) {
-    longestWord = word; // parceque longestWord est plus long que word, il devient le "nouveau" longestWord".//
+    longestWord = word; // parceque longestWord est plus long que word, il devient le "nouveau" longestWord".
   }
  }
 
@@ -38,7 +38,7 @@ return longestWord;
 let longest = findLongestWord(words);
 console.log(longest);
 
-// problem : longestWord ne serait pas défini. Je ne vois pas l'erreur dans le code.//
+// probleme : longestWord ne serait pas défini. Je ne vois pas l'erreur dans le code.
 
 
 
@@ -52,7 +52,7 @@ function sumNumbers(numbers) {
 let total = 0;
   
 for (let i = 0; i <= numbers.length; i++) {
- total += numbers[i]; //total est le résultat de l'addition "la la chaine" de l'array "number".//
+ total += numbers[i]; //total est le résultat de l'addition "la la chaine" de l'array "number".
 }
   return total;
 }
@@ -61,7 +61,7 @@ const sum = sumNumbers(numbers);
 console.log(sum);
 
 
-// total n'est pas défini. je ne trouve pas l'erreur sur le console.log.//
+// total n'est pas défini. je ne trouve pas l'erreur sur le console.log.
 
 
 
@@ -74,14 +74,14 @@ function sum(mixedArr) {
 
 let sum = 0;
 
-mixedArr.forEach(function(elem) { //forEach permet de donner une action pour chaque élement que l'on choisit de différencier par la suite (entre les break).//
-  switch (typeof elem) { //typeOf permet de différencier "boolean", "string" et "nombre".//
+mixedArr.forEach(function(elem) { //forEach permet de donner une action pour chaque élement que l'on choisit de différencier par la suite (entre les break).
+  switch (typeof elem) { //typeOf permet de différencier "boolean", "string" et "nombre".
     case 'number':
-      elem += elem; //nombre, on additionne chaque élément dans la chaine des "elements".//
+      elem += elem; //nombre, on additionne chaque élément dans la chaine des "elements".
     break;
     case 'boolean':
-      if (elem === true) {sum += 1} //pour tout boolean rencontré qui renvoie "true", nous accordons la valeur 1.//
-    else { sum += 0}; //pour tout boolean qui ne renvoie PAS "true", (induction "false"), nous 
+      if (elem === true) {sum += 1} //pour tout boolean rencontré qui renvoie "true", nous accordons la valeur 1.
+    else { sum += 0}; //pour tout boolean qui ne renvoie PAS "true", (induction "false")
     break;
     case 'string' = elem.length;
     break;
@@ -121,10 +121,10 @@ let sumLetter = 0;
 
 for (let i = 0; wordsArr.length; i++) { 
 
-  let sumOfLetter += wordsArr[i].length; //sumOfLetter vaut l'addition sur la continuité de la chaine wordsArr du nomnbre de lettre de chaque éléments.//
+  let sumOfLetter += wordsArr[i].length; //sumOfLetter vaut l'addition sur la continuité de la chaine wordsArr du nomnbre de lettre de chaque éléments.
 }
 
-return sumOfLetter/wordsArr.length; //wordsArr.length permet de ne pas se tromper sur le nombre d'éléments pour la division, astucieux et logique.)//
+return sumOfLetter/wordsArr.length; //wordsArr.length permet de ne pas se tromper sur le nombre d'éléments pour la division, astucieux et logique).
 }
 
 let averageOfLetter = averageWordLength(wordsArr);
@@ -166,13 +166,13 @@ const wordsUnique = [
 
 function uniquifyArray(wordsUnique) {
 
-if (wordsUnique < 1) return null; //vérification.//
+if (wordsUnique < 1) return null; //vérification.
 
-let newArray = []; // totalement issue de la correction d'Antoine. il est possible de signifier la création d'un nouveau tableau avec des crochets vides.//
+let newArray = []; // totalement issue de la correction d'Antoine. il est possible de signifier la création d'un nouveau tableau avec des crochets vides.
 
-for ( let i = 0; i <= wordsUnique.length; i++) { //requalifions cette ligne comme zone de recherche des éléments de la fonction.//
-  if newArray.indexOf(wordsUnique[i]) === -1 { //je signifie que si, dans mon tableau newArray, la valeur de wordUnique controlé, n'est pas présente...//
-    newArray.push(wordsUnique[i]); //... alors je pousse dans newArray l'élément présent dans wordsUnique.//
+for ( let i = 0; i <= wordsUnique.length; i++) { //requalifions cette ligne comme zone de recherche des éléments de la fonction.
+  if newArray.indexOf(wordsUnique[i]) === -1 { //je signifie que si, dans mon tableau newArray, la valeur de wordUnique controlé, n'est pas présente...
+    newArray.push(wordsUnique[i]); //... alors je pousse dans newArray l'élément présent dans wordsUnique.
   }
 }
 
@@ -218,7 +218,7 @@ function doesWordExist(wordsFind) {
 
   }
 
-console.log(doesWordExist(wordsFind)); //demander correction sur cette méthode.//
+console.log(doesWordExist(wordsFind)); //demander correction sur cette méthode.
 
 
 // Iteration #7: Count repetition
@@ -236,7 +236,7 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes(wordsCount, word) { //nous intégrons un élément "word" dans ce type de fonction pour être mot "recherché)".//
+function howManyTimes(wordsCount, word) { //nous intégrons un élément "word" dans ce type de fonction pour être mot "recherché)".
 
   if (matrix < 1) return null;
 
@@ -244,8 +244,8 @@ function howManyTimes(wordsCount, word) { //nous intégrons un élément "word" 
 
   for (let i = 0; i <= wordsCount.length; i++) {
 
-    if (wordsCount[i] === word){ //exemple à garder dans le cas d'une recherche spécifique dans un tableau//
-    timeWordFound++; //la formule signifie de rechercher un nombre de fois ou le mot recherché est trouvé dans l'array.//
+    if (wordsCount[i] === word){ //exemple à garder dans le cas d'une recherche spécifique dans un tableau.
+    timeWordFound++; //la formule signifie de rechercher un nombre de fois ou le mot recherché est trouvé dans l'array.
     }
   }
 
@@ -253,13 +253,13 @@ function howManyTimes(wordsCount, word) { //nous intégrons un élément "word" 
 
 }
 
-//correction d'Antoine//
+//correction d'Antoine
 const howManyMatter = howManyTimes(wordsCount, 'matter');
 console.log(howManyMatter);
 
 const howManyDog = howManyTimes(wordsCount, 'dog');
 console.log(howManyDog);
-//lors de l'appel de fonction, on détermine le mot recherché à la suite du tableau initial.//
+//lors de l'appel de fonction, on détermine le mot recherché à la suite du tableau initial.
 
 
 
@@ -303,28 +303,28 @@ function greatestProduct(matrix) {
       return ((m[i] || [])[j] || 1); //besoin d'explications.//
     }
     // With a double for loop [i,j], loop through all our elements
-    for (let i=0; i < nRows-1; i++) { //on choisit "i" pour les lignes.//
-      for (let j=0; j < nCols-1; j++) { //on choisit "j" pour les colonnes.//
+    for (let i=0; i < nRows-1; i++) { //on choisit "i" pour les lignes.
+      for (let j=0; j < nCols-1; j++) { //on choisit "j" pour les colonnes.
         
-        horizontal = el(i, j) * el(i, j+1) * el(i, j+2) * el(i, j+3); //on controle à l'horizontal 4 éléments (3 colonnes à la suite croissante de l'élément de base).//
+        horizontal = el(i, j) * el(i, j+1) * el(i, j+2) * el(i, j+3); //on controle à l'horizontal 4 éléments (3 colonnes à la suite croissante de l'élément de base).
         
-        vertical = el(i, j) * el(i+1, j) * el(i+2, j) * el(i+3, j); //on controle verticalement en controlant 3 lignes après la ligne de base.//
-        result = Math.max(result, horizontal, vertical); //on cherche le maximum trouvé par une infinité d'opération dans notre matrice sur deux dimensions, verticale et horizontale.//
+        vertical = el(i, j) * el(i+1, j) * el(i+2, j) * el(i+3, j); //on controle verticalement en controlant 3 lignes après la ligne de base.
+        result = Math.max(result, horizontal, vertical); //on cherche le maximum trouvé par une infinité d'opération dans notre matrice sur deux dimensions, verticale et horizontale.
       }
     }
     return result;
   }
 }
 
-//exemple test Antoine.//
+//exemple test Antoine.
 const maxProduct = greatestProduct(matrix);
 console.log(maxProduct);
 
 
 
 
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
+/* The following is required to make unit tests work.
+Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
   module.exports = {
     maxOfTwoNumbers,
